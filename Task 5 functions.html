@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Functions Tasks</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    input {
+        margin: 5px 0;
+        padding: 5px;
+        width: 200px;
+    }
+    button {
+        padding: 5px 10px;
+        margin-top: 10px;
+    }
+    p {
+        font-weight: bold;
+    }
+</style>
+<body>
+    <h2> Armstrong Number</h2>
+    <input type="number" id="num" placeholder="Enter a number"><br>
+    <button onclick="checkArmstrong()"> Check Armstrong</button>
+    <p id="result1"></p>
+    <hr>
+    <h2>Second Largest Number</h2>
+    <input type="number" id="a" placeholder="First number"><br>
+    <input type="number" id="b" placeholder="Second number"><br>
+    <input type="number" id="c" placeholder="Third number"><br>
+    <button onclick="findSecondLargest()">Find Second Largest</button>
+    <p id="result2"></p>
+     <hr>
+    <h2>Smallest Number</h2>
+    <input type="number" id="a" placeholder="First number"><br>
+    <input type="number" id="b" placeholder="Second number"><br>
+    <input type="number" id="c" placeholder="Third number"><br>
+    <button onclick="findSmallest()">Find Smallest</button>
+    <p id="result3"></p>
+
+    <script>
+        //  Armstrong Number
+        function checkArmstrong() {
+            let num = Number(document.getElementById("num").value);
+            let original = num;
+            let digits = String(num).length;
+            let sum = 0;
+            if (num < 0) {
+                document.getElementById("result1").innerText =
+                    "Not an Armstrong Number";
+                return;
+            }
+            while (num > 0) {
+                let digit = num % 10;
+                sum += digit ** digits;
+                num = Math.floor(num / 10);
+            }
+            if (sum === original) {
+                document.getElementById("result1").innerText =
+                    "Armstrong Number";
+            } else {
+                document.getElementById("result1").innerText =
+                    "Not an Armstrong Number";
+            }
+        }
+        // Second Largest Number
+        function findSecondLargest() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let c = Number(document.getElementById("c").value);
+            let numbers = [a, b, c];
+            numbers.sort((x, y) => y - x);
+            if (a === b && b === c) {
+                document.getElementById("result2").innerText =
+                    "All numbers are equal";
+                return;
+            }
+            document.getElementById("result2").innerText =
+                "Second Largest: " + numbers[1];
+        }
+         // Smallest Number
+        function findSmallest() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let c = Number(document.getElementById("c").value);
+            let numbers = [a, b, c];
+            numbers.sort((x, y) => x - y);
+            if (a === b && b === c) {
+                document.getElementById("result3").innerText =
+                    "All numbers are equal";
+                return;
+            }
+            document.getElementById("result3").innerText =
+                "Smallest: " + numbers[0];
+        }
+    </script>
+</body>
+</html>
